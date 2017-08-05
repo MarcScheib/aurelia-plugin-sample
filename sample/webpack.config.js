@@ -7,12 +7,15 @@ const webpack = require('webpack');
 
 const srcDir = path.resolve(__dirname, 'src');
 const nodeModulesDir = path.resolve(__dirname, 'node_modules');
-const pluginSrcDir = path.resolve(__dirname, '../src');
 
 module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
-    modules: [srcDir, nodeModulesDir, pluginSrcDir]
+    modules: [srcDir, nodeModulesDir],
+    alias: {
+      'aurelia-plugin-sample': path.resolve('../src'),
+      'aurelia-plugin-sample$': path.resolve('../src/index.ts'),
+    }
   },
   entry: {
     app: ['aurelia-bootstrapper']
